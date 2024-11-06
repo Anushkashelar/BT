@@ -14,7 +14,7 @@ contract crud{
     function create(string memory name) public {
         users.push(User(nextId, name));
         nextId++;
-    }
+    }       
 
     function read(uint id) view public returns (uint, string memory){
         for(uint i = 0; i < users.length; i++){
@@ -23,6 +23,15 @@ contract crud{
             }
         }
         revert("User does not exist");
+    }
+
+
+    function Update(uint id, string memory name) public {
+        for(uint i=0; i<users.length; i++) {
+            if(users[i].id == id) {
+                users[i].name =name;
+            }
+        }
     }
 
     function Delete(uint id) public {
